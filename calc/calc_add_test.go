@@ -127,6 +127,8 @@ Details:
     Explain the choice of assertion: Explicitly defining edge values ensures the function can handle atypical inputs while preserving correctness.
     Discuss the importance: It confirms the function is resilient across varied input specifics without logical breakdown.
 
+
+roost_feedback [10/07/2025, 4:08:00 AM]:-\sImprove\sassertions
 */
 
 // ********RoostGPT********
@@ -240,10 +242,10 @@ func TestAdd(t *testing.T) {
 				t.Logf("Test succeeded for %s. Input: (%d, %d), Result: %d", tc.description, tc.num1, tc.num2, result)
 			}
 
-			if result == tc.expected {
-				t.Logf("Test `%s` passed. The result accurately reflects the addition operation.", tc.name)
+			if result != tc.expected {
+				t.Errorf("Test '%s' failed. Expected: %d, Got: %d", tc.name, tc.expected, result)
 			} else {
-				t.Logf("Test `%s` failed due to mismatch. Expected: %d, Got: %d", tc.name, tc.expected, result)
+				t.Logf("Test '%s' passed successfully.", tc.name)
 			}
 		})
 	}
